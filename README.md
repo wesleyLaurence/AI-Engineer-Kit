@@ -101,13 +101,7 @@ ai-engineer-kit/
 ├── README.md              # You are here
 ├── CONTRIBUTING.md        # How to contribute
 │
-├── concepts/              # Layer 1: Mental models and architecture
-│   ├── foundations/       #   Setup, models, first API calls
-│   ├── core/              #   Prompts, memory, streaming, tools, RAG
-│   ├── agents/            #   Agent patterns and architecture
-│   └── production/        #   Deployment, auth, payments, monitoring
-│
-├── wisdom/                # Layer 2: Hard-won experiential knowledge
+├── wisdom/                # Hard-won experiential knowledge
 │
 ├── skills/                # Layer 3: Guided build experiences
 │

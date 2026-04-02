@@ -1,23 +1,21 @@
 ---
 name: start
 description: First-run onboarding for new learners. Creates the learner/ directory with personalized profile, progress, project, and notes files. Use when learner/profile.md does not exist.
-compatibility: Designed for Claude Code (or similar products)
 ---
 
 # Skill: Start (Onboarding)
 
-## What This Skill Does
-Guides a new learner through their first session. Creates the `learner/` directory with personalized files. Sets the foundation for the entire learning experience.
-
 ## When to Use
 When `learner/profile.md` does not exist. This is the first-run experience.
+
+**Important:** The `learner/` directory is gitignored. Always check for it using a direct file read, never search or glob tools.
 
 ## Prerequisites
 None — this is where everything begins.
 
 ## Context to Load
-- `AGENTS.md` (teaching philosophy and curriculum overview)
-- `concepts/foundations/coding-agents.md` (for Phase 0 topic)
+- `AGENTS.md` (teaching philosophy and curriculum index)
+- `../coding-agents/references/coding-agents.md` (for Phase 0 topic)
 
 ---
 
@@ -50,36 +48,91 @@ Ask about (in natural conversation, not as a checklist):
 - Any specific areas of interest? (Agents? RAG? Production deployment?)
 
 ### Step 4: Create the Learner Directory
-Create `learner/` with four files:
+Create `learner/` with four files. Use YAML frontmatter (title, type, created, updated) on each.
 
-**profile.md** — Based on everything gathered. Include background, learning style, goals, and any initial notes.
+**profile.md** — Who the learner is. Include:
+- Background (name, experience level, languages, role)
+- AI/ML experience (what they've used and built)
+- Learning style (pace, depth preference, what works for them)
+- Goals (short-term, long-term, career motivation)
+- Notes (initial observations about what will help them learn)
 
-**progress.md** — The full curriculum with checkboxes. Customize based on their goals:
-- If they have a specific project, mark irrelevant topics as "brief overview"
-- If they're experienced, mark topics they already know as skippable (but verify later)
-- If they want the guided project, use the full default curriculum
+**progress.md** — The living curriculum tracker. Include:
+- Current phase and topic
+- Last session date
+- The full curriculum with checkboxes (`- [x]` completed, `- [ ]` remaining):
 
-**project.md** — Their chosen project (or "guided portfolio project" with a brief description). Architecture decisions and state sections start mostly empty.
+  Phase 0: Orientation
+  - How This Learning Experience Works
+  - Working with Coding Agents Effectively
 
-**notes.md** — Initial observations about the learner.
+  Phase 1: Foundations
+  - Python for AI Engineering
+  - Environment Setup
+  - Foundation Models
+  - Your First LLM Call
+
+  Phase 2: Core Skills
+  - Prompt Engineering
+  - Threads and Conversation Memory
+  - Streaming
+  - Tool Calling
+  - RAG
+
+  Phase 3: Agent Architecture
+  - Agentic Workflows
+  - ReAct Agents
+  - MCP Servers
+  - Agent Skills and AGENTS.md
+  - Context Engineering
+  - Human in the Loop
+  - Subagents and Multi-Agent Systems
+  - Deep Agents
+
+  Phase 4: Production
+  - FastAPI Backend
+  - WebSocket Streaming
+  - Next.js Frontend
+  - Authentication
+  - Database and Persistence
+  - AWS Deployment
+  - Usage Tracking and Payments
+  - Evaluation, Tracing, and Monitoring
+  - Security and Guardrails
+  - Cost Optimization
+
+- Customize: if they're experienced, mark known topics as checked with a note (e.g., `*experienced, skip*`). If they have a specific project, mark irrelevant topics as brief overviews.
+- Milestones table with status and dates
+- Focus areas based on their goals
+
+**project.md** — What they're building. Include:
+- Project overview (name, type, description)
+- Architecture decisions (starts mostly empty, grows over time)
+- Current state (what's working, in progress, not started)
+- Goals for the project
+
+**notes.md** — Everything else. Include:
+- Session-specific observations
+- Things to revisit in future sessions
+- Preferences discovered during onboarding
+- Ideas for their project
 
 ### Step 5: Orient Them
 Briefly explain:
-- The repo has concept files they can browse (in `concepts/`)
+- The repo has reference files they can browse (in each skill's `references/` folder)
 - Skills guide them through builds
 - Their code will live in `projects/`
 - They can check their progress in `learner/progress.md` anytime
 - Show them their personalized learning path
 
 ### Step 6: Begin Phase 0
-Start the first topic: how to work effectively with a coding agent.
-Read `concepts/foundations/coding-agents.md` for context.
-Teach interactively — this is meta because they're learning it by doing it.
+Route into the `learning-experience` skill, then the `coding-agents` skill.
+These cover the first two topics: how this learning experience works, and how to work effectively with a coding agent.
 
 ---
 
 ## When Done
 - `learner/` directory exists with all four files
 - Learner understands the paradigm
-- Phase 0 first topic is in progress or complete
+- Phase 0 topics are in progress or complete
 - Update `learner/progress.md` with any completed topics

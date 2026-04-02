@@ -13,7 +13,7 @@ Reviews the learner's AI application for security vulnerabilities with specific 
 Before deployment, or when the learner reaches the security topic in the curriculum.
 
 ## Context to Load
-- `concepts/production/security.md`
+- `../security-guardrails/references/security.md`
 - `wisdom/production-lessons.md`
 - `wisdom/common-pitfalls.md`
 - `learner/project.md`
